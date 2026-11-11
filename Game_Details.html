@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameZone | Ultimate Game Details</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#080914;
+    color:#fff;
+}
+
+/* NAVBAR */
+nav{
+    min-height:82px;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    background:#101225;
+    border-bottom:1px solid #292b49;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:29px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#a78bfa;
+}
+
+.logo span{
+    color:#fff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#c5c5d5;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    color:#b69aff;
+}
+
+/* HERO */
+.hero{
+    min-height:430px;
+    padding:90px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at 15% 40%,#4c2587 0%,transparent 35%),
+    radial-gradient(circle at 85% 60%,#192c70 0%,transparent 35%),
+    linear-gradient(135deg,#15152d,#080914);
+    border-bottom:1px solid #292b49;
+}
+
+.hero-label{
+    color:#c4b5fd;
+    font-size:12px;
+    letter-spacing:5px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:58px;
+    font-weight:900;
+    margin:22px 0 15px;
+}
+
+.hero h1 span{
+    color:#a78bfa;
+}
+
+.hero p{
+    max-width:650px;
+    color:#b7b8ca;
+    font-size:15px;
+    line-height:1.9;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    border-radius:7px;
+    background:linear-gradient(135deg,#8b5cf6,#5b21b6);
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 25px #7c3aed55;
+}
+
+/* STATS */
+.stats{
+    width:86%;
+    max-width:1150px;
+    margin:-35px auto 65px;
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    background:#15172a;
+    border:1px solid #343052;
+    border-radius:13px;
+    overflow:hidden;
+}
+
+.stat-box{
+    text-align:center;
+    padding:25px 15px;
+    border-right:1px solid #343052;
+}
+
+.stat-box:last-child{
+    border-right:none;
+}
+
+.stat-box h2{
+    color:#b69aff;
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.stat-box p{
+    color:#999bad;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+/* SECTION TITLE */
+.section-title{
+    text-align:center;
+    margin:0 20px 45px;
+}
+
+.section-title span{
+    color:#a78bfa;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    font-size:35px;
+    margin:13px 0;
+}
+
+.section-title p{
+    color:#9b9daf;
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* GAME SECTION */
+.container{
+    width:86%;
+    max-width:1250px;
+    margin:auto;
+}
+
+.game-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#131629;
+    border:1px solid #2c304b;
+    border-radius:17px;
+    overflow:hidden;
+    margin-bottom:38px;
+    transition:.35s;
+}
+
+.game-card:hover{
+    border-color:#9368f6;
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px #6d28d922;
+}
+
+/* ALTERNATE LAYOUT */
+.game-card:nth-child(even) .game-image{
+    order:2;
+}
+
+.game-image{
+    position:relative;
+    min-height:360px;
+    overflow:hidden;
+}
+
+.game-image img{
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:360px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.game-card:hover .game-image img{
+    transform:scale(1.07);
+}
+
+.image-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,#080914aa,transparent 65%);
+}
+
+.image-tag{
+    position:absolute;
+    bottom:22px;
+    left:22px;
+    padding:10px 16px;
+    background:#17152dcc;
+    border:1px solid #a78bfa77;
+    border-radius:5px;
+    color:#d5c7ff;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* GAME INFORMATION */
+.game-info{
+    padding:38px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.game-number{
+    color:#55516f;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.category{
+    color:#b69aff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-top:15px;
+    text-transform:uppercase;
+}
+
+.game-info h2{
+    font-size:32px;
+    margin:12px 0 16px;
+}
+
+.game-info p{
+    color:#b6b8c9;
+    font-size:14px;
+    line-height:1.9;
+}
+
+/* INFORMATION BOXES */
+.game-data{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin:22px 0;
+}
+
+.data-box{
+    padding:14px;
+    background:#1b1e34;
+    border:1px solid #30314e;
+    border-radius:8px;
+}
+
+.data-box small{
+    display:block;
+    color:#9294a9;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.data-box strong{
+    color:#d8caff;
+    font-size:13px;
+}
+
+/* FEATURES */
+.features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-bottom:25px;
+}
+
+.features span{
+    padding:9px 13px;
+    background:#292044;
+    border:1px solid #45336b;
+    color:#d0c0ff;
+    border-radius:20px;
+    font-size:11px;
+}
+
+/* BUTTON */
+.details-btn{
+    display:inline-block;
+    width:max-content;
+    padding:13px 24px;
+    background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+    border-radius:7px;
+    transition:.3s;
+}
+
+.details-btn:hover{
+    background:linear-gradient(135deg,#a78bfa,#7c3aed);
+    transform:translateY(-3px);
+}
+
+/* FEATURED BANNER */
+.featured{
+    width:86%;
+    max-width:1250px;
+    margin:75px auto;
+    padding:65px 25px;
+    text-align:center;
+    border:1px solid #4a3478;
+    border-radius:17px;
+    background:
+    radial-gradient(circle at 50% 0%,#51318a66,transparent 60%),
+    linear-gradient(135deg,#17152e,#111326);
+}
+
+.featured span{
+    color:#c4b5fd;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:4px;
+}
+
+.featured h2{
+    font-size:34px;
+    margin:17px 0;
+}
+
+.featured p{
+    color:#b0b1c3;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.featured a{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 28px;
+    background:#fff;
+    color:#6d28d9;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:13px;
+    transition:.3s;
+}
+
+.featured a:hover{
+    background:#d9ccff;
+    transform:translateY(-3px);
+}
+
+/* FOOTER */
+footer{
+    background:#101225;
+    border-top:1px solid #292b49;
+    padding:40px 7% 20px;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:35px;
+    padding-bottom:30px;
+}
+
+.footer-logo{
+    color:#a78bfa;
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+.footer-content p{
+    color:#9294a8;
+    font-size:13px;
+    line-height:1.9;
+    max-width:350px;
+}
+
+.footer-links h3{
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.footer-links a{
+    display:block;
+    color:#999bad;
+    text-decoration:none;
+    font-size:13px;
+    margin:11px 0;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#b69aff;
+}
+
+.copyright{
+    border-top:1px solid #292b49;
+    padding-top:20px;
+    text-align:center;
+    color:#77798d;
+    font-size:12px;
+}
+
+/* BACK TO TOP */
+.top-link{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    width:43px;
+    height:43px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#7c3aed;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:22px;
+    z-index:50;
+    box-shadow:0 5px 20px #7c3aed55;
+}
+
+/* RESPONSIVE */
+@media(max-width:850px){
+
+    nav{
+        justify-content:center;
+    }
+
+    nav ul{
+        justify-content:center;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .game-card{
+        grid-template-columns:1fr;
+    }
+
+    .game-card:nth-child(even) .game-image{
+        order:0;
+    }
+
+    .game-image,
+    .game-image img{
+        min-height:270px;
+        height:270px;
+    }
+
+    .game-info{
+        padding:28px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    nav ul{
+        gap:11px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .hero{
+        min-height:350px;
+        padding:65px 18px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero-label{
+        letter-spacing:3px;
+    }
+
+    .stats{
+        width:92%;
+    }
+
+    .stat-box{
+        padding:19px 5px;
+    }
+
+    .stat-box h2{
+        font-size:21px;
+    }
+
+    .stat-box p{
+        font-size:9px;
+    }
+
+    .section-title h2{
+        font-size:26px;
+    }
+
+    .container,
+    .featured{
+        width:92%;
+    }
+
+    .game-info{
+        padding:23px;
+    }
+
+    .game-info h2{
+        font-size:26px;
+    }
+
+    .game-data{
+        gap:8px;
+    }
+
+    .featured h2{
+        font-size:26px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">GAME<span>ZONE</span></div>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Games.html">Games</a></li>
+        <li><a href="Game_Details.html" class="active">Game Details</a></li>
+        <li><a href="Categories.html">Categories</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-label">THE ULTIMATE GAMING COLLECTION</div>
+
+    <h1>Explore Game <span>Universe</span></h1>
+
+    <p>
+        Step into the world of gaming. Discover popular titles,
+        explore their features and find your next favorite
+        gaming adventure.
+    </p>
+
+    <a href="#games" class="hero-btn">Discover Games ↓</a>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>06</h2>
+        <p>FEATURED GAMES</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>06</h2>
+        <p>GAME CATEGORIES</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>100%</h2>
+        <p>GAMING ENTERTAINMENT</p>
+    </div>
+</section>
+
+<!-- SECTION TITLE -->
+<div class="section-title" id="games">
+    <span>EXPLORE OUR COLLECTION</span>
+    <h2>Featured Game Details</h2>
+    <p>Get to know the games, their platforms and exciting features.</p>
+</div>
+
+<div class="container">
+
+    <!-- PUBG -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://liquipedia.net/commons/images/thumb/b/b0/Zharki.jpg/747px-Zharki.jpg" alt="PUBG Mobile">
+            <div class="image-overlay"></div>
+            <span class="image-tag">FEATURED TITLE</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">01 / 06</span>
+            <span class="category">Battle Royale</span>
+            <h2>PUBG Mobile</h2>
+            <p>
+                PUBG Mobile is a popular battle royale game where
+                players explore large maps, collect equipment and
+                compete in multiplayer matches. It offers different
+                maps, modes and team-based experiences.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>Mobile</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Battle Royale</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Multiplayer</span>
+                <span>Online</span>
+                <span>Team Play</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+    <!-- FREE FIRE -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://staticg.sportskeeda.com/editor/2021/11/8a095-16374219768863-1920.jpg" alt="Free Fire">
+            <div class="image-overlay"></div>
+            <span class="image-tag">POPULAR TITLE</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">02 / 06</span>
+            <span class="category">Survival</span>
+            <h2>Free Fire</h2>
+            <p>
+                Free Fire is an online survival game known for its
+                fast-paced matches. Players can choose characters,
+                explore different locations and enjoy exciting
+                multiplayer game modes.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>Mobile</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Survival</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Characters</span>
+                <span>Multiplayer</span>
+                <span>Fast Matches</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+    <!-- GTA V -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://www.thedailystar.net/sites/default/files/styles/big_1/public/images/2023/09/18/los_santos.png?h=36cf5fed" alt="GTA V Los Santos">
+            <div class="image-overlay"></div>
+            <span class="image-tag">OPEN WORLD</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">03 / 06</span>
+            <span class="category">Open World</span>
+            <h2>Grand Theft Auto V</h2>
+            <p>
+                GTA V is an open-world action-adventure game set
+                in Los Santos. Players can explore the city,
+                drive different vehicles, discover locations
+                and enjoy an engaging storyline.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>PC & Console</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Open World</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Story Mode</span>
+                <span>Adventure</span>
+                <span>Exploration</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+    <!-- VALORANT -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://prod.assets.earlygamecdn.com/images/ascent-valorant-map-guide.jpeg?mtime=1669134663" alt="Valorant">
+            <div class="image-overlay"></div>
+            <span class="image-tag">COMPETITIVE TITLE</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">04 / 06</span>
+            <span class="category">Tactical Shooter</span>
+            <h2>Valorant</h2>
+            <p>
+                Valorant is a competitive team-based game featuring
+                unique characters and special abilities. Players
+                work together, plan strategies and compete
+                in challenging team matches.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>PC</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Tactical</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Team Based</span>
+                <span>Strategy</span>
+                <span>Competitive</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+    <!-- CALL OF DUTY -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/guides/games/blackops7/nuketown-2025/COD-BO7-NUKETOWN-005.webp" alt="Call of Duty">
+            <div class="image-overlay"></div>
+            <span class="image-tag">ACTION TITLE</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">05 / 06</span>
+            <span class="category">Action</span>
+            <h2>Call of Duty</h2>
+            <p>
+                Call of Duty is a popular gaming franchise featuring
+                story campaigns and multiplayer modes. Different
+                titles offer unique maps, challenges and
+                a variety of gaming experiences.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>PC & Console</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Action</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Campaign</span>
+                <span>Multiplayer</span>
+                <span>Team Matches</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+    <!-- MINECRAFT -->
+    <div class="game-card">
+        <div class="game-image">
+            <img src="https://cdn.mos.cms.futurecdn.net/Dg5DwPErVMs36ar4YqGCcc.jpg" alt="Minecraft">
+            <div class="image-overlay"></div>
+            <span class="image-tag">CREATIVE TITLE</span>
+        </div>
+
+        <div class="game-info">
+            <span class="game-number">06 / 06</span>
+            <span class="category">Sandbox</span>
+            <h2>Minecraft</h2>
+            <p>
+                Minecraft is a creative sandbox game where players
+                explore block-based worlds, build structures,
+                collect resources and create their own adventures
+                through different game modes.
+            </p>
+
+            <div class="game-data">
+                <div class="data-box">
+                    <small>PLATFORM</small>
+                    <strong>PC & Console</strong>
+                </div>
+                <div class="data-box">
+                    <small>GENRE</small>
+                    <strong>Sandbox</strong>
+                </div>
+            </div>
+
+            <div class="features">
+                <span>Creative Mode</span>
+                <span>Survival Mode</span>
+                <span>Building</span>
+            </div>
+
+            <a href="Games.html" class="details-btn">Explore Games →</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- FEATURED BANNER -->
+<section class="featured">
+    <span>YOUR NEXT ADVENTURE STARTS HERE</span>
+    <h2>Find Your Next Favorite Game</h2>
+    <p>
+        Explore our complete collection and discover
+        games from different categories.
+    </p>
+    <a href="Games.html">View All Games →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+
+        <div>
+            <div class="footer-logo">GAMEZONE</div>
+            <p>
+                Explore the gaming universe with GameZone.
+                Discover exciting titles, popular categories
+                and your next favorite gaming experience.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="Games.html">Games</a>
+            <a href="Game_Details.html">Game Details</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore More</h3>
+            <a href="Categories.html">Categories</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 GameZone. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="#top" class="top-link" title="Back to Top">↑</a>
+
+</body>
+</html>

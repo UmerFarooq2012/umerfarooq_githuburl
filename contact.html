@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact GameZone for questions, feedback and gaming inquiries.">
+<title>GameZone | Contact Us</title>
+
+<style>
+:root{
+    --bg:#080a14;
+    --panel:#111629;
+    --card:#171c30;
+    --border:#2b3048;
+    --primary:#9565ed;
+    --dark:#7544d1;
+    --accent:#bd9aff;
+    --white:#fff;
+    --muted:#a4a9bd;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    min-height:78px;
+    padding:15px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    background:rgba(12,15,29,.96);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:white;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+nav ul{
+    display:flex;
+    align-items:center;
+    list-style:none;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+nav ul a{
+    color:#c5c7d5;
+    font-size:14px;
+    font-weight:600;
+    padding-bottom:7px;
+    border-bottom:2px solid transparent;
+    transition:.3s;
+}
+
+nav ul a:hover,
+nav ul a.active{
+    color:var(--accent);
+    border-color:var(--accent);
+}
+
+/* HERO */
+
+.contact-hero{
+    min-height:390px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 8%;
+    background:
+    linear-gradient(rgba(8,10,20,.80),rgba(8,10,20,.95)),
+    url("https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600")
+    center/cover no-repeat;
+    border-bottom:1px solid var(--border);
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.tag{
+    color:var(--accent);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.contact-hero h1{
+    font-size:55px;
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.contact-hero h1 span{
+    color:var(--accent);
+}
+
+.contact-hero p{
+    color:#c2c5d4;
+    font-size:15px;
+    line-height:1.9;
+}
+
+/* COMMON SECTION */
+
+section{
+    padding:75px 8%;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.mini-title{
+    color:var(--accent);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-bottom:10px;
+}
+
+.section-heading h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* CONTACT INFO */
+
+.contact-info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-bottom:65px;
+}
+
+.info-card{
+    background:linear-gradient(145deg,#171c31,#111526);
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:30px 20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-7px);
+    border-color:var(--primary);
+    box-shadow:0 12px 30px #9565ed25;
+}
+
+.info-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#292044;
+    border:1px solid #63449c;
+    border-radius:50%;
+    font-size:27px;
+}
+
+.info-card h3{
+    color:var(--accent);
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* CONTACT FORM AREA */
+
+.contact-area{
+    background:linear-gradient(135deg,#101426,#17142b);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.contact-layout{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:35px;
+    align-items:stretch;
+}
+
+/* LEFT INFORMATION */
+
+.contact-text{
+    padding:35px;
+    background:linear-gradient(145deg,#21183a,#13182b);
+    border:1px solid #473467;
+    border-radius:14px;
+}
+
+.contact-text h2{
+    font-size:29px;
+    margin-bottom:17px;
+}
+
+.contact-text h2 span{
+    color:var(--accent);
+}
+
+.contact-text p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+.contact-points{
+    list-style:none;
+}
+
+.contact-points li{
+    color:#d3d3df;
+    font-size:13px;
+    margin-bottom:17px;
+}
+
+.contact-points li span{
+    color:var(--accent);
+    margin-right:9px;
+}
+
+/* FORM */
+
+.contact-form{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:35px;
+}
+
+.contact-form h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.contact-form .form-subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.form-group{
+    margin-bottom:19px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:#d8d9e4;
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:13px 15px;
+    background:#0d1120;
+    border:1px solid #343951;
+    border-radius:7px;
+    outline:none;
+    color:white;
+    font-family:inherit;
+    font-size:13px;
+    transition:.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px #9565ed20;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+    color:#777d91;
+}
+
+.form-group textarea{
+    height:130px;
+    resize:vertical;
+}
+
+.form-group select option{
+    background:#111629;
+}
+
+.submit-btn{
+    width:100%;
+    padding:14px;
+    background:linear-gradient(135deg,var(--primary),var(--dark));
+    border:1px solid var(--primary);
+    border-radius:7px;
+    color:white;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 9px 25px #9565ed45;
+}
+
+/* SUCCESS MESSAGE */
+
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:16px;
+    background:#123b2b;
+    border:1px solid #27ae70;
+    border-radius:8px;
+    color:#70e6a8;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+    animation:showMessage .4s ease;
+}
+
+.success-message.show{
+    display:block;
+}
+
+@keyframes showMessage{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* SOCIAL MEDIA */
+
+.social-section{
+    text-align:center;
+}
+
+.social-grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:17px;
+    margin-top:28px;
+}
+
+.social-link{
+    min-width:125px;
+    padding:15px 22px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:#d7d8e3;
+    font-size:13px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.social-link:hover{
+    color:var(--accent);
+    border-color:var(--primary);
+    transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+    background:#060811;
+    padding:55px 8% 22px;
+    border-top:1px solid var(--border);
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:35px;
+}
+
+.footer-box h3{
+    color:var(--accent);
+    margin-bottom:17px;
+    font-size:17px;
+}
+
+.footer-box p{
+    color:#9296a8;
+    font-size:13px;
+    line-height:1.9;
+    max-width:390px;
+}
+
+.footer-box a{
+    display:block;
+    color:#9296a8;
+    font-size:13px;
+    margin-bottom:11px;
+    transition:.3s;
+}
+
+.footer-box a:hover{
+    color:var(--accent);
+    padding-left:5px;
+}
+
+.copyright{
+    border-top:1px solid #22263a;
+    padding-top:20px;
+    text-align:center;
+    color:#777d90;
+    font-size:12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .contact-layout{
+        grid-template-columns:1fr;
+    }
+
+    .contact-info{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    nav{
+        justify-content:center;
+        position:static;
+    }
+
+    nav ul{
+        justify-content:center;
+        gap:14px;
+    }
+
+    nav ul a{
+        font-size:12px;
+    }
+
+    .contact-hero{
+        min-height:340px;
+    }
+
+    .contact-hero h1{
+        font-size:39px;
+    }
+
+    section{
+        padding:55px 6%;
+    }
+
+    .section-heading h2{
+        font-size:28px;
+    }
+
+    .contact-info{
+        grid-template-columns:1fr;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .contact-form,
+    .contact-text{
+        padding:25px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+        gap:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <a class="logo" href="index.html">GAME<span>ZONE.</span></a>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Games.html">Games</a></li>
+        <li><a href="Game_Details.html">Game Details</a></li>
+        <li><a href="Categories.html">Categories</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<header class="contact-hero">
+    <div class="hero-content">
+
+        <div class="tag">WE WOULD LOVE TO HEAR FROM YOU</div>
+
+        <h1>GET IN <span>TOUCH</span></h1>
+
+        <p>
+            Have a question, suggestion or feedback?
+            Connect with GameZone and let us know what you think.
+            We are always happy to hear from gaming enthusiasts.
+        </p>
+
+    </div>
+</header>
+
+<main>
+
+<!-- CONTACT INFORMATION -->
+
+<section>
+
+    <div class="section-heading">
+        <div class="mini-title">CONTACT INFORMATION</div>
+        <h2>Let's Connect</h2>
+        <p>Find different ways to get in touch with us.</p>
+    </div>
+
+    <div class="contact-info">
+
+        <div class="info-card">
+            <div class="info-icon">📧</div>
+            <h3>Email Us</h3>
+            <p>Send us your questions and feedback.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🎮</div>
+            <h3>Gaming Community</h3>
+            <p>Share your gaming interests and ideas.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">💬</div>
+            <h3>Feedback</h3>
+            <p>Tell us how we can improve GameZone.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT FORM -->
+
+<section class="contact-area">
+
+    <div class="section-heading">
+        <div class="mini-title">SEND US A MESSAGE</div>
+        <h2>We Are Here to Help</h2>
+        <p>Fill out the form below to share your message with us.</p>
+    </div>
+
+    <div class="contact-layout">
+
+        <!-- LEFT SIDE -->
+
+        <div class="contact-text">
+
+            <div class="tag">GAMEZONE SUPPORT</div>
+
+            <h2>Let's Start a <span>Conversation.</span></h2>
+
+            <p>
+                Whether you want to ask a question, share an idea
+                or provide feedback, your message matters to us.
+                Complete the contact form and let us know how we can help.
+            </p>
+
+            <ul class="contact-points">
+                <li><span>✦</span> Questions and inquiries</li>
+                <li><span>✦</span> Suggestions and feedback</li>
+                <li><span>✦</span> Gaming-related discussions</li>
+                <li><span>✦</span> Website improvement ideas</li>
+            </ul>
+
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+
+        <form class="contact-form">
+
+            <h2>Send a Message</h2>
+
+            <p class="form-subtitle">
+                Please provide your details below.
+            </p>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name"
+                    placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                    placeholder="Enter your email" required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+
+                <select id="subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option>General Inquiry</option>
+                    <option>Feedback</option>
+                    <option>Game Suggestion</option>
+                    <option>Technical Support</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+
+                <textarea id="message" name="message"
+                placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Send Message →
+            </button>
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div class="success-message" id="successMessage" role="status" aria-live="polite">
+                ✓ Message Sent Successfully!
+                Thank you for contacting GameZone.
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- SOCIAL MEDIA -->
+
+<section class="social-section">
+
+    <div class="section-heading">
+        <div class="mini-title">STAY CONNECTED</div>
+        <h2>Follow GameZone</h2>
+        <p>Stay connected and explore more gaming content.</p>
+    </div>
+
+    <div class="social-grid">
+
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            📸 Instagram
+        </a>
+
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            🌐 Facebook
+        </a>
+
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            ▶ YouTube
+        </a>
+
+        <a href="https://www.discord.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            🎧 Discord
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-box">
+            <h3>GAMEZONE.</h3>
+
+            <p>
+                Explore popular games, discover different categories
+                and find exciting gaming experiences in one place.
+                Your gaming journey starts here.
+            </p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Games.html">Games</a>
+            <a href="Game_Details.html">Game Details</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Explore More</h3>
+
+            <a href="Categories.html">Categories</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 GameZone. All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- FORM SUCCESS SCRIPT -->
+
+<script>
+const contactForm = document.querySelector(".contact-form");
+const successMessage = document.getElementById("successMessage");
+
+contactForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    if(!contactForm.checkValidity()){
+        contactForm.reportValidity();
+        return;
+    }
+
+    successMessage.classList.add("show");
+
+    contactForm.reset();
+
+    successMessage.scrollIntoView({
+        behavior:"smooth",
+        block:"nearest"
+    });
+
+});
+</script>
+
+</body>
+</html>
